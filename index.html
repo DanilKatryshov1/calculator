@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Рецепт x2</title>
+  <!-- <link rel="stylesheet" href="css/styles.css"> -->
+  <link rel="icon" type="image/png" href="img/favicon/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="img/favicon/favicon.svg" />
+  <link rel="shortcut icon" href="img/favicon/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-touch-icon.png" />
+  <link rel="manifest" href="img/favicon/site.webmanifest" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+
+<body>
+
+  <!-- Заголовок и краткое описание -->
+  <div class="container ">
+
+    <div class="row">
+      <div class="col-12">
+        <figure>
+          <blockquote class="blockquote">
+            <h2 class="display-6 text-center  ">Увеличить или
+              <small class="text-body-secondary "> уменьшить </small> ингредиенты в рецепте
+            </h2>
+          </blockquote>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12">
+        <figcaption class="blockquote-footer text-end fs-5">
+          Онлайн калькулятор поможет увеличить или уменьшить <br> количество ингредиентов в рецепте.
+        </figcaption>
+      </div>
+      </figure>
+    </div>
+    <hr class="w-100 border border-primary border-3 opacity-45">
+
+
+    <!-- Инструкция -->
+
+    <div class="accordion accordion-flush " id="accordionExample">
+      <div class="accordion-item ">
+        <h2 class="accordion-header ">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+            Инструкция
+          </button>
+        </h2>
+        <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            <ul class="list-group">
+              <li class="list-group-item list-group-item-primary">Заполните название, количество и единицу измерения для
+                ингредиента, нажмите кнопку <strong> Добавить</strong>.</li>
+              <li class="list-group-item list-group-item-primary">Если количество не заполнять или установить равным
+                нулю, то получится значение - по вкусу.</li>
+              <li class="list-group-item list-group-item-primary">Если нужно удалить ингредиент, то нажмите на значок
+                удаления ингредиента, который добавили ранее.</li>
+              <li class="list-group-item list-group-item-primary">Выберите уменьшить или увеличить количество
+                ингредиентов и введите во сколько раз. Нажмите кнопку
+                <strong>Вычислить</strong>, чтобы получить новый рецепт.
+              </li>
+              <li class="list-group-item list-group-item-primary">Введите название рецепта нажав на заголовок с
+                соответствующим текстом.</li>
+              <li class="list-group-item list-group-item-primary">Можно сделать скриншот готового результата или
+                скопировть в буфер обмена.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      </div>
+
+
+      <!-- Настройки приложения -->
+      <nav class="navbar bg-body-tertiary mt-3">
+        <div class="container-fluid">
+
+          <a class="navbar-brand icon-link icon-link-hover"
+            style="--bs-icon-link-transform: translate3d(-.525rem, 0, 0);" href="#" data-bs-toggle="collapse"
+            data-bs-target="#navbarNavDropdown">
+            <i class="bi bi-gear d-inline-block align-text-top"> Настройка</i>
+          </a>
+
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav pt-3">
+              <li class="nav-item ">
+                <button class="btn btn-outline-primary mb-2 w-100" id="increase_fs_btn">Увеличить
+                  шрифт</button>
+              </li>
+              <li class="nav-item">
+                <button class="btn btn-outline-primary mb-2 w-100" id="decrease_fs_btn">Уменьшить
+                  шрифт</button>
+              </li>
+              <li class="nav-item">
+                <button class="btn btn-outline-primary w-100" id="change_theme_btn">Сменить тему</button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Ингридиенты -->
+
+      <div class="row mt-5 ">
+        <div class="col-6">
+          <div class="card mb-3" style="max-width: 648px;">
+            <div class="row g-0">
+              <div class="col-md-7">
+                <img src="1.png" class="img-fluid rounded-start" alt="...">
+              </div>
+              <div class="col-md-5">
+                <div class="card-body">
+                  <h5 class="card-title">Ингредиенты</h5>
+                  <p class="card-text">
+                    <input class="form-control mb-1" id="item_name" type="text" placeholder="Название">
+                    <input class="form-control mb-1" id="item_count" type="number" placeholder="Кол-во">
+                    <select class="form-control" id="item_type">
+                      <option value="г.">г.</option>
+                      <option value="кг.">кг.</option>
+                      <option value="мл.">мл.</option>
+                      <option value="л.">л.</option>
+                      <option value="ч. л.">ч. л.</option>
+                      <option value="ст. л.">ст. л.</option>
+                      <option value="шт.">шт.</option>
+                    </select>
+                    <button class="btn btn-primary mt-3" id="add_btn">Добавить</button>
+                  <div id="original_recipe"></div>
+                  </p>
+                  
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+
+        <div class="col-6 ">
+          <!-- Измененный рецепт -->
+          <div class="card mb-3 " style="max-width: 648px;">
+            <div class="row g-0">
+              <div class="col-md-7">
+                <img src="2.png" class="img-fluid rounded-start" alt="...">
+              </div>
+              <div class="col-md-5">
+                <div class="card-body">
+                  <h5 class="card-title">Изменить рецепт</h5>
+                  <p class="card-text">
+                    <select class="form-control mb-3" id="how_many_times_to_change">
+                      <option value="1">Уменьшить во сколько раз</option>
+                      <option value="2">Увеличить во сколько раз</option>
+                    </select>
+                    <input class="form-control" id="how_many_times" type="number" placeholder="4" value="4">
+                    <button class="btn btn-primary mt-3"  id="calculate_btn">Вычислить</button>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+  </div>
+  
+
+
+
+  <!-- Измененный рецепт -->
+   <div class="container">
+  <div class="row">
+    <div class="col-12">
+      <div class="card" >
+  <div class="card-header text-center">
+   <h3 id="recipe_name">Нажмите, чтобы ввести название рецепта</h3>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title text-center"></h5>
+    <p class="card-text">
+       <div id="modified_recipe">
+   
+    <div id="modified_recipe_body"></div>
+  </div>
+  <div class="row">
+  <button class="btn btn-primary" id="copy_btn ">Копировать</button>
+    </p>
+  </div>
+  </div>
+</div>
+    </div>
+  </div>
+</div>
+
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"
+    crossorigin="anonymous"></script>
+  <script src="js/main.js"></script>
+</body>
+
+</html>
