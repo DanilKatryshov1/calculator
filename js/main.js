@@ -127,25 +127,33 @@ function renderRecipeList(container, recipeList, action, modifier, isNew = false
 
     if (count !== 'по вкусу') {
       if (action === "*") {
-        count *= modifier;
+        count = parseFloat((count * modifier).toFixed(2)); // Округляем до двух знаков после запятой
       } else if (action === "/") {
-        count /= modifier;
+        count = parseFloat((count / modifier).toFixed(2)); // Округляем до двух знаков после запятой
       }
     }
 
     const div = document.createElement('div');
-    div.innerHTML = isNew
-      ? `<div><div>${item.name} ${count} ${type}</div></div>`
-      : `<div>
-           <div>${item.name} ${count} ${type}</div>
-           <button class="remove-btn" data-name="${item.name}">
-             <i class="bi bi-trash-fill" data-name="${item.name}"></i>
-           </button>
-         </div>`;
-    
+    // Добавляем Bootstrap классы для стилизации и flexbox для выравнивания
+    div.classList.add('d-flex', 'justify-content-between', 'align-items-center', 'mb-2'); // d-flex, отступы, выравнивание
+
+    if (isNew) {
+      div.innerHTML = `
+        <div>${item.name} ${count} ${type}</div>
+      `;
+    } else {
+      div.innerHTML = `
+        <div>${item.name} ${count} ${type}</div>
+        <button class="btn btn-outline-danger btn-sm remove-btn" data-name="${item.name}">
+          <i class="bi bi-trash-fill" data-name="${item.name}"></i>
+        </button>
+      `;
+    }
+
     containerElement.appendChild(div);
   });
 }
+
 
 function addIngredient() {
   const name = elements.itemName.value.trim();
